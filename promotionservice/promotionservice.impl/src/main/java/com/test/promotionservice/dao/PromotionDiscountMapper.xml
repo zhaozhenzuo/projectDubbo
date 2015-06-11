@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.promotionservice.dao.PromotionDiscountMapper">
+
+	<select id="selectPoBySo" resultType="com.test.promotionservice.domain.PromotionDiscount">
+		select t.* from ds_promotion_discount t
+		<include refid="sqlWhere" />
+	</select>
+
+
+	<select id="selectCount" resultType="long">
+		select count(1) from ds_promotion_discount t
+		<include refid="sqlWhere" />
+	</select>
+
+
+	<insert id="insert" parameterType="com.test.promotionservice.domain.PromotionDiscount"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into ds_promotion_discount(
+		id,
+		belongPromotionId,
+		promotionDiscountType,
+		promotionDiscountTypeCalTarget,
+		money,
+		discount,
+		creator_Id,
+		creator_name,
+		updator_Id,
+		updator_name,
+		created_Time,
+		updated_Time,
+		re_mark,
+		lock_version)
+		values(
+		#{id,jdbcType=BIGINT},
+		#{belongPromotionId,jdbcType=BIGINT},
+		#{promotionDiscountType,jdbcType=VARCHAR},
+		#{promotionDiscountTypeCalTarget,jdbcType=VARCHAR},
+		#{money,jdbcType=VARCHAR},
+		#{discount,jdbcType=VARCHAR},
+		#{creatorId,jdbcType=BIGINT},
+		#{creatorName,jdbcType=VARCHAR},
+		#{updatorId,jdbcType=BIGINT},
+		#{updatorName,jdbcType=VARCHAR},
+		#{createdTime,jdbcType=TIMESTAMP},
+		#{updatedTime,jdbcType=TIMESTAMP},
+		#{remark,jdbcType=VARCHAR},
+		#{lockVersion,jdbcType=BIGINT})
+	</insert>
+
+
+	<delete id="delete">delete from ds_promotion_discount where id=#{id}
+	</delete>
+
+
+	<update id="update" parameterType="com.test.promotionservice.domain.PromotionDiscount">
+		update ds_promotion_discount
+		set
+		id=#{id,jdbcType=BIGINT},
+		belongPromotionId=#{belongPromotionId,jdbcType=BIGINT},
+		promotionDiscountType=#{promotionDiscountType,jdbcType=VARCHAR},
+		promotionDiscountTypeCalTarget=#{promotionDiscountTypeCalTarget,jdbcType=VARCHAR},
+		money=#{money,jdbcType=VARCHAR},
+		discount=#{discount,jdbcType=VARCHAR},
+		creator_Id=#{creatorId,jdbcType=BIGINT},
+		creator_name=#{creatorName,jdbcType=VARCHAR},
+		updator_Id=#{updatorId,jdbcType=BIGINT},
+		updator_name=#{updatorName,jdbcType=VARCHAR},
+		created_Time=#{createdTime,jdbcType=TIMESTAMP},
+		updated_Time=#{updatedTime,jdbcType=TIMESTAMP},
+		re_mark=#{remark,jdbcType=VARCHAR},
+		lock_version=#{lockVersion,jdbcType=BIGINT}
+		where id=#{id,jdbcType=BIGINT}
+	</update>
+
+
+	<select id="selectVoBySo" resultMap="promotionDiscountVoMapper">
+		select t.* from ds_promotion_discount t
+		<include refid="sqlWhere" />
+	</select>
+
+	<select id="selectPoByPrimaryKey" resultMap="promotionDiscountMapper">
+		select t.* from
+		ds_promotion_discount t
+		where t.id=#{id}
+	</select>
+
+	<resultMap type="com.test.promotionservice.domain.PromotionDiscount"
+		id="promotionDiscountMapper">
+		<id column="id" property="id" />
+		<result column="belongPromotionId" property="belongPromotionId" />
+		<result column="promotionDiscountType" property="promotionDiscountType" />
+		<result column="promotionDiscountTypeCalTarget" property="promotionDiscountTypeCalTarget" />
+		<result column="money" property="money" />
+		<result column="discount" property="discount" />
+		<result column="creator_Id" property="creatorId" />
+		<result column="creator_name" property="creatorName" />
+		<result column="updator_Id" property="updatorId" />
+		<result column="updator_name" property="updatorName" />
+		<result column="created_Time" property="createdTime" />
+		<result column="updated_Time" property="updatedTime" />
+		<result column="re_mark" property="remark" />
+		<result column="lock_version" property="lockVersion" />
+	</resultMap>
+
+
+	<resultMap type="com.test.promotionservice.vo.PromotionDiscountVo"
+		id="promotionDiscountVoMapper">
+		<id column="id" property="id" />
+		<result column="belongPromotionId" property="belongPromotionId" />
+		<result column="promotionDiscountType" property="promotionDiscountType" />
+		<result column="promotionDiscountTypeCalTarget" property="promotionDiscountTypeCalTarget" />
+		<result column="money" property="money" />
+		<result column="discount" property="discount" />
+		<result column="creator_Id" property="creatorId" />
+		<result column="creator_name" property="creatorName" />
+		<result column="updator_Id" property="updatorId" />
+		<result column="updator_name" property="updatorName" />
+		<result column="created_Time" property="createdTime" />
+		<result column="updated_Time" property="updatedTime" />
+		<result column="re_mark" property="remark" />
+		<result column="lock_version" property="lockVersion" />
+	</resultMap>
+
+
+	<sql id="sqlWhere">
+		<where>
+		</where>
+	</sql>
+
+</mapper>

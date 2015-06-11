@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.productservice.dao.CategoryMapper">
+
+	<select id="selectPoBySo" resultType="com.test.productservice.domain.Category">
+		select t.* from ds_Category t
+		<include refid="sqlWhere" />
+	</select>
+
+
+	<select id="selectCount" resultType="long">
+		select count(1) from ds_Category t
+		<include refid="sqlWhere" />
+	</select>
+
+
+	<insert id="insert" parameterType="com.test.productservice.domain.Category"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into ds_Category(
+		id,
+		name,
+		parentId,
+		creator_Id,
+		creator_name,
+		updator_Id,
+		updator_name,
+		created_Time,
+		updated_Time,
+		re_mark,
+		lock_version)
+		values(
+		#{id,jdbcType=BIGINT},
+		#{name,jdbcType=VARCHAR},
+		#{parentId,jdbcType=BIGINT},
+		#{creatorId,jdbcType=BIGINT},
+		#{creatorName,jdbcType=VARCHAR},
+		#{updatorId,jdbcType=BIGINT},
+		#{updatorName,jdbcType=VARCHAR},
+		#{createdTime,jdbcType=TIMESTAMP},
+		#{updatedTime,jdbcType=TIMESTAMP},
+		#{remark,jdbcType=VARCHAR},
+		#{lockVersion,jdbcType=BIGINT})
+	</insert>
+
+
+	<update id="update" parameterType="com.test.productservice.domain.Category">
+		update ds_Category
+		set
+		id=#{id,jdbcType=BIGINT},
+		name=#{name,jdbcType=VARCHAR},
+		parentId=#{parentId,jdbcType=BIGINT},
+		creator_Id=#{creatorId,jdbcType=BIGINT},
+		creator_name=#{creatorName,jdbcType=VARCHAR},
+		updator_Id=#{updatorId,jdbcType=BIGINT},
+		updator_name=#{updatorName,jdbcType=VARCHAR},
+		created_Time=#{createdTime,jdbcType=TIMESTAMP},
+		updated_Time=#{updatedTime,jdbcType=TIMESTAMP},
+		re_mark=#{remark,jdbcType=VARCHAR},
+		lock_version=#{lockVersion,jdbcType=BIGINT}
+		where
+		id=#{id,jdbcType=BIGINT}
+	</update>
+
+
+	<select id="selectVoBySo" resultMap="categoryVoMapper">
+		select t.* from ds_Category t
+		<include refid="sqlWhere" />
+	</select>
+
+	<select id="selectPoByPrimaryKey" resultMap="categoryMapper">
+		select t.* from
+		ds_Category t
+		where t.id=#{id}
+	</select>
+
+	<resultMap type="com.test.productservice.domain.Category" id="categoryMapper">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="parentId" property="parentId" />
+		<result column="creator_Id" property="creatorId" />
+		<result column="creator_name" property="creatorName" />
+		<result column="updator_Id" property="updatorId" />
+		<result column="updator_name" property="updatorName" />
+		<result column="created_Time" property="createdTime" />
+		<result column="updated_Time" property="updatedTime" />
+		<result column="re_mark" property="remark" />
+		<result column="lock_version" property="lockVersion" />
+	</resultMap>
+
+
+	<resultMap type="com.test.productservice.vo.CategoryVo" id="categoryVoMapper">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="parentId" property="parentId" />
+		<result column="creator_Id" property="creatorId" />
+		<result column="creator_name" property="creatorName" />
+		<result column="updator_Id" property="updatorId" />
+		<result column="updator_name" property="updatorName" />
+		<result column="created_Time" property="createdTime" />
+		<result column="updated_Time" property="updatedTime" />
+		<result column="re_mark" property="remark" />
+		<result column="lock_version" property="lockVersion" />
+	</resultMap>
+
+
+	<sql id="sqlWhere">
+		<where>
+		</where>
+	</sql>
+
+</mapper>

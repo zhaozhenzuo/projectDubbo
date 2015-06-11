@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.productservice.dao.SkuMapper">
+
+	<select id="selectPoBySo" resultType="com.test.productservice.domain.Sku">
+		select t.* from ds_sku t
+		<include refid="sqlWhere" />
+	</select>
+
+
+	<select id="selectCount" resultType="long">
+		select count(1) from ds_sku t
+		<include refid="sqlWhere" />
+	</select>
+
+
+	<insert id="insert" parameterType="com.test.productservice.domain.Sku"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into ds_sku(
+		id,
+		barcode,
+		productId,
+		marketPrice,
+		salePrice,
+		picUrls,
+		orginalStock,
+		creator_Id,
+		creator_name,
+		updator_Id,
+		updator_name,
+		created_Time,
+		updated_Time,
+		re_mark,
+		lock_version)
+		values(
+		#{id,jdbcType=BIGINT},
+		#{barcode,jdbcType=VARCHAR},
+		#{productId,jdbcType=BIGINT},
+		#{marketPrice,jdbcType=VARCHAR},
+		#{salePrice,jdbcType=VARCHAR},
+		#{picUrls,jdbcType=VARCHAR},
+		#{orginalStock,jdbcType=INTEGER},
+		#{creatorId,jdbcType=BIGINT},
+		#{creatorName,jdbcType=VARCHAR},
+		#{updatorId,jdbcType=BIGINT},
+		#{updatorName,jdbcType=VARCHAR},
+		#{createdTime,jdbcType=TIMESTAMP},
+		#{updatedTime,jdbcType=TIMESTAMP},
+		#{remark,jdbcType=VARCHAR},
+		#{lockVersion,jdbcType=BIGINT})
+	</insert>
+
+
+	<delete id="delete">delete from ds_sku where id=#{id}</delete>
+
+
+	<update id="update" parameterType="com.test.productservice.domain.Sku">
+		update ds_sku
+		set
+		id=#{id,jdbcType=BIGINT},
+		barcode=#{barcode,jdbcType=VARCHAR},
+		productId=#{productId,jdbcType=BIGINT},
+		marketPrice=#{marketPrice,jdbcType=VARCHAR},
+		salePrice=#{salePrice,jdbcType=VARCHAR},
+		picUrls=#{picUrls,jdbcType=VARCHAR},
+		orginalStock=#{orginalStock,jdbcType=INTEGER},
+		creator_Id=#{creatorId,jdbcType=BIGINT},
+		creator_name=#{creatorName,jdbcType=VARCHAR},
+		updator_Id=#{updatorId,jdbcType=BIGINT},
+		updator_name=#{updatorName,jdbcType=VARCHAR},
+		created_Time=#{createdTime,jdbcType=TIMESTAMP},
+		updated_Time=#{updatedTime,jdbcType=TIMESTAMP},
+		re_mark=#{remark,jdbcType=VARCHAR},
+		lock_version=#{lockVersion,jdbcType=BIGINT}
+		where id=#{id,jdbcType=BIGINT}
+	</update>
+
+
+	<select id="selectVoBySo" resultMap="skuVoMapper">
+		select t.* from ds_sku t
+		<include refid="sqlWhere" />
+	</select>
+
+	<select id="selectPoByPrimaryKey" resultMap="skuMapper">
+		select t.* from
+		ds_sku t
+		where t.id=#{id}
+	</select>
+
+	<resultMap type="com.test.productservice.domain.Sku" id="skuMapper">
+		<id column="id" property="id" />
+		<result column="barcode" property="barcode" />
+		<result column="productId" property="productId" />
+		<result column="marketPrice" property="marketPrice" />
+		<result column="salePrice" property="salePrice" />
+		<result column="picUrls" property="picUrls" />
+		<result column="orginalStock" property="orginalStock" />
+		<result column="creator_Id" property="creatorId" />
+		<result column="creator_name" property="creatorName" />
+		<result column="updator_Id" property="updatorId" />
+		<result column="updator_name" property="updatorName" />
+		<result column="created_Time" property="createdTime" />
+		<result column="updated_Time" property="updatedTime" />
+		<result column="re_mark" property="remark" />
+		<result column="lock_version" property="lockVersion" />
+	</resultMap>
+
+
+	<resultMap type="com.test.productservice.vo.SkuVo" id="skuVoMapper">
+		<id column="id" property="id" />
+		<result column="barcode" property="barcode" />
+		<result column="productId" property="productId" />
+		<result column="marketPrice" property="marketPrice" />
+		<result column="salePrice" property="salePrice" />
+		<result column="picUrls" property="picUrls" />
+		<result column="orginalStock" property="orginalStock" />
+		<result column="creator_Id" property="creatorId" />
+		<result column="creator_name" property="creatorName" />
+		<result column="updator_Id" property="updatorId" />
+		<result column="updator_name" property="updatorName" />
+		<result column="created_Time" property="createdTime" />
+		<result column="updated_Time" property="updatedTime" />
+		<result column="re_mark" property="remark" />
+		<result column="lock_version" property="lockVersion" />
+	</resultMap>
+
+
+	<sql id="sqlWhere">
+		<where>
+			<if test="productId!=null">
+				and t.productId=#{productId}
+			</if>
+			<if test="skuIdList!=null and skuIdList.size>0">
+				and t.id in
+				<foreach item="item" index="index" collection="skuIdList"
+					open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+	</sql>
+
+</mapper>

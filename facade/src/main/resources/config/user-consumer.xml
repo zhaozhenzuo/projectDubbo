@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:reference id="userService"
+		interface="com.test.userservice.service.inf.UserService" />
+
+	<dubbo:reference id="productService"
+		interface="com.test.productservice.service.inf.ProductService" />
+
+	<dubbo:reference id="skuService"
+		interface="com.test.productservice.service.inf.SkuService" />
+
+	<dubbo:reference id="codeInfoService"
+		interface="com.test.codeinfoservice.service.inf.CodeInfoService" />
+
+	<dubbo:reference id="categoryService"
+		interface="com.test.productservice.service.inf.CategoryService" />
+
+	<dubbo:reference id="skuAttributeService"
+		interface="com.test.productservice.service.inf.SkuAttributeService" />
+
+	<dubbo:reference id="cartService"
+		interface="com.test.cartservice.service.CartService" />
+
+	<dubbo:reference id="skuStockService"
+		interface="com.test.productservice.service.inf.SkuStockService" />
+
+	<dubbo:reference id="skuStockInMemService"
+		interface="com.test.cartservice.service.SkuStockInMemService" />
+
+	<dubbo:reference id="promotionService"
+		interface="com.test.promotionservice.service.inf.PromotionService" />
+
+	<dubbo:consumer timeout="20000" check="false" />
+
+</beans> 

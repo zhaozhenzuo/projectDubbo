@@ -1,0 +1,12 @@
+/target/
+/.settings
+
+*.classpath
+*.project
+*.iml
+*.lanuch
+/*.versionsBackup
+/bin
+.settings/
+.project
+/target
