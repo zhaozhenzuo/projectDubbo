@@ -8,9 +8,9 @@
 	<name>facade Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.10.RELEASE</version>
+		<groupId>com.test</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0</version>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -18,10 +18,16 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -29,31 +35,31 @@
 			<artifactId>userservice.inf</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.test</groupId>
 			<artifactId>promotionservice.inf</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.test</groupId>
 			<artifactId>cartservice.inf</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.test</groupId>
 			<artifactId>productservice.inf</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.test</groupId>
 			<artifactId>codeinfoservice.inf</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.test</groupId>
 			<artifactId>framework</artifactId>

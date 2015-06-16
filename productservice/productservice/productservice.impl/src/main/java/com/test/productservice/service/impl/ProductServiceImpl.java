@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -82,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.selectPoByPrimaryKey(id);
 	}
 	
-	@Cacheable(value="product1")
+	@CacheEvict("product1")
 	@Override
 	public ProductVo getProductWithSkuInfoByProductId(Long id) {
 		if (id == null) {
