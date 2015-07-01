@@ -9,5 +9,12 @@ import com.test.productservice.vo.SkuStockVo;
 public interface SkuStockMapper extends BaseMapper<SkuStock, SkuStockVo>{
 	
 	public boolean deleteByIdList(List<Long> skuIdList);
+	
+	/**
+	 * 库存增减方法
+	 * @param skuStock
+	 * @return
+	 */
+	public int updateStockBySkuIdAndCountOfBuy(SkuStock skuStock);
 
 }

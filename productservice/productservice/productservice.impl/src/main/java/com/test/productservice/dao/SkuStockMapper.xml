@@ -49,13 +49,20 @@
 	</delete>
 
 	<delete id="deleteByIdList">
-		delete from ds_skustock 
+		delete from ds_skustock
 		where skuId in
-		<foreach item="item" index="index" collection="list"
-			open="(" separator="," close=")">
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
 			#{item}
 		</foreach>
 	</delete>
+
+	<update id="updateStockBySkuIdAndCountOfBuy" parameterType="com.test.productservice.domain.SkuStock">
+		update ds_skustock set
+		count=count-#{count}
+		where skuId=#{skuId} and
+		count-#{count}>=0
+	</update>
 
 
 	<update id="update" parameterType="com.test.productservice.domain.SkuStock">
