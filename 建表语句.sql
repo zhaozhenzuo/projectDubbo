@@ -1,15 +1,16 @@
+use test;
 create table ds_userlogin(
   id  bigint(19),
   userId  bigint(19),
   userName  varchar(255),
-  lastLoginTime  timestamp,
+  lastLoginTime  datetime,
   loginIp  varchar(255),
   creator_Id  bigint(19),
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -27,8 +28,8 @@ create table ds_user(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -47,8 +48,8 @@ create table ds_codeinfo(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -70,8 +71,8 @@ create table ds_product(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -91,8 +92,8 @@ create table ds_sku(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -108,8 +109,8 @@ create table ds_Category(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -128,8 +129,8 @@ create table ds_Product_Param(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -148,8 +149,8 @@ create table ds_SkuAttribute(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -164,8 +165,8 @@ create table ds_skustock(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -175,14 +176,14 @@ alter table ds_skustock change id id bigint(19) auto_increment;
 create table ds_promotion_record(
   id  bigint(19),
   name  varchar(255),
-  startTime  timestamp,
-  endTime  timestamp,
+  startTime  datetime,
+  endTime  datetime,
   creator_Id  bigint(19),
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -202,8 +203,8 @@ create table ds_promotion_condition(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -222,8 +223,8 @@ create table ds_promotion_discount(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -238,8 +239,8 @@ create table ds_promotion_target(
   creator_name  varchar(255),
   updator_Id  bigint(19),
   updator_name  varchar(255),
-  created_Time  timestamp,
-  updated_Time  timestamp,
+  created_Time  datetime,
+  updated_Time  datetime,
   re_mark  varchar(255),
   lock_version  bigint(19)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
